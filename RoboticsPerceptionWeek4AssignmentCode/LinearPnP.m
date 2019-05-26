@@ -28,16 +28,14 @@ for i = 1:size(X, 1)
 end
 % Solve system of linear equations using SVD
 [~, ~, V] = svd(AA);
-P = reshape(V(:, end), 3, 4)
+P = reshape(V(:, end), 4, 3)';
 [U, D, V] = svd(P(:, 1:3));
 R = U*V';
-C = P(:,4) / D(1,1);
+C = -R'* P(:,4) / D(1,1);
 
 if (det(U*V') < 0)
     R = -R;
     C = -C;
 end
-
-det(R)
 
 

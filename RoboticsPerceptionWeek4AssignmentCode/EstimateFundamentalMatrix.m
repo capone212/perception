@@ -19,7 +19,7 @@ for i = 1:8
 end
 
 [U D V] = svd(A);
-F = reshape(V(:, 9), 3, 3);
+F = reshape(V(:, 9), 3, 3)';
 [U D V] = svd(F);
 D(3,3) = 0;
 F = U * D * V';
